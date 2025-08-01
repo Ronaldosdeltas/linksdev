@@ -1,4 +1,7 @@
+import {FaInstagram, FaGithub, FaLinkedinIn} from 'react-icons/fa'
+import { Socialmidia } from "../../components/socialmidia"
 export function Home(){
+
   return(
     <div className="flex flex-col w-full py-4 items-center justify-center">
       <h1 className="md:text-4xl  text-3xl font-bold text-white mt-20">My Personal-Links</h1>
@@ -14,6 +17,16 @@ export function Home(){
         </section>
 
         <footer className="flex justify-center gap-3 my-4">
+          <Socialmidia url='https://www.instagram.com/ronaldoss_deltass/'>
+            <FaInstagram size={35} color='#E1306C'className='transform hover:rotate-360 transition-transform' />
+          </Socialmidia>
+          <Socialmidia url='https://github.com/Ronaldosdeltas'>
+            <FaGithub size={35} color='#FFF' className='transform hover:rotate-360 transition-transform' />
+          </Socialmidia>
+          <Socialmidia url='https://www.linkedin.com/in/ronaldoss-santos-3a9406325/'>
+            <FaLinkedinIn size={35} color='#0A66C2'className='transform hover:rotate-360 transition-transform' />
+          </Socialmidia>
+
           
         </footer >
 

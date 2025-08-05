@@ -1,7 +1,9 @@
 export function Admin(){
     return (
         <>
-        <div></div>
+        <div>
+            <h1>Admin Page</h1>
+        </div>
         </>
     
     )

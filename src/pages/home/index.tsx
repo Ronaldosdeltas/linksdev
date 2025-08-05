@@ -1,5 +1,6 @@
 import {FaInstagram, FaGithub, FaLinkedinIn} from 'react-icons/fa'
 import { Socialmidia } from "../../components/socialmidia"
+import AnimatedBackground from "../../components/animatedbackground/matrixbackground"
 export function Home(){
 
   return(
@@ -14,6 +15,7 @@ export function Home(){
               Canal no Youtube
             </p>
           </a>
+          
         </section>
 
         <footer className="flex justify-center gap-3 my-4">
@@ -31,7 +33,7 @@ export function Home(){
         </footer >
 
       </main>
-
+      <AnimatedBackground />
     </div>
   )
 }

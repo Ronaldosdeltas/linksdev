@@ -7,6 +7,8 @@ import { Networks } from './pages/networks'
 import { Contact } from './pages/contact/contact.tsx'
 import { Layout } from './components/layout/layout.tsx'
 
+import { Private } from './routes/privete.tsx'
+
 
 
 const router = createBrowserRouter([
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/admin',
-          element: <Admin />
+          element: <Private><Admin /></Private>
         },
         {
           path: '/login',
@@ -28,10 +30,11 @@ const router = createBrowserRouter([
         },
         {
           path: '/admin/socialmidia',
-          element: <Networks />
-        },  {
+          element: <Private><Networks /></Private>
+        },  
+        {
         path: 'contact/',
-        element: <Contact />,
+        element: <Contact />
     },
       ]
   }

@@ -10,7 +10,7 @@ export function Admin(){
         <>
         <div className="flex item-center flex-col min-h-screen pb-7 px-2">
 
-            <form className="flex flex-col mt-8 mb-3  w-full max-w-x1">
+            <form className="flex flex-col  mt-8 mb-3  w-11/12 max-w-x1">
                 <label className="text-white font-medium mt-2 mab-2">link Name</label>
 
                 <Input
@@ -42,9 +42,26 @@ export function Admin(){
                         value={bgColorInput}
                         onChange={(e) => setBgColorInput(e.target.value)}
                         />
-
                     </div>
                 </section>
+
+               {nameInput !== '' && (
+                 <div className="flex items-center justify-start flex-col mb-7 p-1 border-gray-100/25 border rounded-md">
+                <label className="text-white font-medium mt-2 mb-3">it's look like</label>
+                <article
+                className="w-11/12 max-w-lg flex flex-col items-center justify-between bg-zinc-900 rounded px-1 py-3"
+                style={{marginBottom:8, marginTop:8, background: bgColorInput}}
+                >
+                    <p className="font-medium" style={{color:textColorInput}}>{nameInput}</p>
+                </article>
+                </div>
+
+               )}
+
+                <button type="submit"
+                className="bg-blue-500 rounded-md text-white font-medium gap-4 flex justify-center items-center mb-5">
+                    Sign-up
+                </button>
             </form>
             
         </div>

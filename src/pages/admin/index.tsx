@@ -1,5 +1,7 @@
 import { Input } from "../../components/input"
 import { useState } from "react"
+import { FaTrash } from "react-icons/fa"
+import { TbBackground } from "react-icons/tb"
 
 export function Admin(){
     const [nameInput, setNameInput] = useState('')
@@ -62,6 +64,22 @@ export function Admin(){
                 className="bg-blue-500 rounded-md text-white font-medium gap-4 flex justify-center items-center mb-5">
                     Sign-up
                 </button>
+
+                <h2 className="font-bold text-white mb-5 text-2x1"> My Links</h2>
+                <article 
+                className="flex items-center  justify-between w-11/12 max-w-full rounded py-3 px-2 mb-2 select-none"
+                style={{backgroundColor: '#2563EB', color: '#FFF'}}
+                >
+                    <p>Youtube Channel</p>
+                    <div>
+                        <button
+                        className="border border-dashed p-1 rounded"
+                        >
+                            <FaTrash size={18} color={'#FFF'}/>
+                        </button>
+
+                    </div>
+                </article>
             </form>
             
         </div>

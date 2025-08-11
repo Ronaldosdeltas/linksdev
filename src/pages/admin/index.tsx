@@ -1,18 +1,55 @@
 import { Input } from "../../components/input"
-import { useState } from "react"
+import { useState, type FormEvent } from "react"
 import { FaTrash } from "react-icons/fa"
 import { TbBackground } from "react-icons/tb"
+
+import { auth, db } from "../../services/firebaseconection.ts"
+import { 
+addDoc,
+onSnapshot,
+query,
+orderBy,
+doc,
+deleteDoc,
+collection
+ } from "firebase/firestore"
 
 export function Admin(){
     const [nameInput, setNameInput] = useState('')
     const [urlInput, setUrlInput] = useState('')
     const [textColorInput, setTextColorInput] = useState('#f1f1f1')
     const [bgColorInput, setBgColorInput] = useState('')
+
+    function handleRegister(e: FormEvent){
+        e.preventDefault()
+
+        if(nameInput === '' || urlInput === ''){
+        alert('fill the gaps')
+        return;
+        }
+        addDoc(collection(db, 'links'),{
+            name: nameInput,
+            url: urlInput,
+            bg: bgColorInput,
+            color: textColorInput,
+            created: new Date()
+        })
+        .then(() =>{
+            setNameInput('')
+            setUrlInput('')
+            console.log('sucessfuly registred.')
+        })
+        .catch((error) =>{
+            console.log('ERROR DETECTED' + error)
+        })
+
+
+    }
     return (
         <>
         <div className="flex item-center flex-col min-h-screen pb-7 px-2">
 
-            <form className="flex flex-col  mt-8 mb-3  w-11/12 max-w-x1">
+            <form onSubmit={handleRegister} className="flex flex-col  mt-8 mb-3  w-11/12 max-w-x1">
                 <label className="text-white font-medium mt-2 mab-2">link Name</label>
 
                 <Input
@@ -61,19 +98,19 @@ export function Admin(){
                )}
 
                 <button type="submit"
-                className="bg-blue-500 rounded-md text-white font-medium gap-4 flex justify-center items-center mb-5">
+                className="bg-blue-500 rounded-md hover:cursor-pointer text-white font-medium gap-4 flex justify-center items-center mb-5">
                     Sign-up
                 </button>
 
                 <h2 className="font-bold text-white mb-5 text-2x1"> My Links</h2>
                 <article 
-                className="flex items-center  justify-between w-11/12 max-w-full rounded py-3 px-2 mb-2 select-none"
+                className="flex items-center  justify-between w-full rounded py-3 px-2 mb-2 select-none"
                 style={{backgroundColor: '#2563EB', color: '#FFF'}}
                 >
                     <p>Youtube Channel</p>
                     <div>
                         <button
-                        className="border border-dashed p-1 rounded"
+                        className=" hover:cursor-pointer border border-dashed p-1 rounded"
                         >
                             <FaTrash size={18} color={'#FFF'}/>
                         </button>

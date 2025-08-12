@@ -1,5 +1,5 @@
 import { Input } from "../../components/input"
-import { useState, type FormEvent } from "react"
+import { useEffect, useState, type FormEvent } from "react"
 import { FaTrash } from "react-icons/fa"
 import { TbBackground } from "react-icons/tb"
 
@@ -14,11 +14,46 @@ deleteDoc,
 collection
  } from "firebase/firestore"
 
+ interface ListProps{
+    id: string,
+    name:string,
+    url: string,
+    bg:string,
+    color: string
+
+ }
+
 export function Admin(){
     const [nameInput, setNameInput] = useState('')
     const [urlInput, setUrlInput] = useState('')
     const [textColorInput, setTextColorInput] = useState('#f1f1f1')
     const [bgColorInput, setBgColorInput] = useState('')
+
+    const [links, setLinks] =useState<ListProps[]>([])
+
+    useEffect(() =>{
+        const linksRef = collection(db, 'links');
+        const queryRef = query(linksRef, orderBy('created','asc'))
+
+        const unsub =onSnapshot(queryRef, (snapshot) =>{
+            let list =[] as ListProps[];
+
+            snapshot.forEach((doc)=>{
+                list.push({
+                    id: doc.id,
+                    name:doc.data().name,
+                    url:doc.data().url,
+                    bg:doc.data().bg,
+                    color:doc.data().color
+                })
+            })
+            setLinks(list);
+        })
+        return()=>{
+            unsub();
+        }
+        
+    },[])
 
     function handleRegister(e: FormEvent){
         e.preventDefault()

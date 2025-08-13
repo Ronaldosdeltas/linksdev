@@ -78,8 +78,14 @@ export function Admin(){
             console.log('ERROR DETECTED' + error)
         })
 
-
     }
+
+         async function handleDelete(id: string) {
+            const docRef = doc(db, 'links', id)
+            await deleteDoc(docRef)
+
+        }
+   
     return (
         <>
         <div className="flex item-center flex-col min-h-screen pb-7 px-2">
@@ -133,27 +139,31 @@ export function Admin(){
                )}
 
                 <button type="submit"
-                className="bg-blue-500 rounded-md hover:cursor-pointer text-white font-medium gap-4 flex justify-center items-center mb-5">
+                className="bg-blue-500 rounded-md hover:cursor-pointer text-white font-medium gap-4 flex justify-center py-2 items-center mb-5">
                     Sign-up
                 </button>
 
-                <h2 className="font-bold text-white mb-5 text-2x1"> My Links</h2>
-                <article 
-                className="flex items-center  justify-between w-full rounded py-3 px-2 mb-2 select-none"
-                style={{backgroundColor: '#2563EB', color: '#FFF'}}
+                 </form>
+
+                <h2 className="font-bold text-white mb-5 text-2x1 text-center "> My Links</h2>
+                {links.map( (link) =>(
+                    <article 
+                    key={link.id}
+                className="flex items-center justify-between rounded py-3 px-2 mb-2 select-none w-11/12 max-w-x1"
+                style={{backgroundColor: link.bg, color: link.color}}
                 >
-                    <p>Youtube Channel</p>
+                    <p>{link.name}</p>
                     <div>
                         <button
                         className=" hover:cursor-pointer border border-dashed p-1 rounded"
+                        onClick={()=> handleDelete(link.id)}
                         >
                             <FaTrash size={18} color={'#FFF'}/>
                         </button>
 
                     </div>
                 </article>
-            </form>
-            
+                ))}
         </div>
         </>
     

@@ -15,13 +15,35 @@ export function Header(){
 }
   return (
     <header className="bg-gray-900 w-full py-6 flex items-center justify-between px-5">
+      <div className="flex items-center space-x-4">
       <Link to="/">
       <h1 className="text-amber-50 text-2xl font-bold hover:text-amber-300">Ronaldoss
         <span className="bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text text-transparent  hover:text-amber-300">-deltass</span>
       </h1>
       </Link>
+      <Link
+          to="/"
+          className="text-amber-50 hover:text-amber-300 text-2xl font-medium"
+        >
+          Home
+        </Link>
+
+        <Link
+        to= '/admin'
+        className="text-amber-50 hover:text-amber-300 text-2xl font-medium"
+        >
+        Links
+        </Link>
+
+         <Link
+        to= '/admin/socialmidia'
+        className="text-amber-50 hover:text-amber-300 text-2xl font-medium"
+        >
+        Social Media
+        </Link>
+        </div>
       <nav className="flex items-center space-x-4">
-        <Link to="/Contact" className="text-amber-50 hover:text-amber-300 text-2xl font-bold">
+        <Link to="/Contact" className="text-amber-50 hover:text-amber-300 text-2xl font-medium">
         WhatsApp
         </Link>
 

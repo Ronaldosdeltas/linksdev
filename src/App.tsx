@@ -31,7 +31,8 @@ const router = createBrowserRouter([
         {
           path: '/admin/socialmidia',
           element: <Private><Networks /></Private>
-        },  
+        },
+       
         {
         path: 'contact/',
         element: <Contact />

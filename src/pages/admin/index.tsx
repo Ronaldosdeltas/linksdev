@@ -91,15 +91,15 @@ export function Admin(){
         <div className="flex item-center flex-col min-h-screen pb-7 px-2">
 
             <form onSubmit={handleRegister} className="flex flex-col  mt-8 mb-3  w-11/12 max-w-x1">
-                <label className="text-white font-medium mt-2 mab-2">link Name</label>
+                <label className="text-white font-medium mt-2 mab-2">Name</label>
 
                 <Input
-                placeholder="Type Link..."
+                placeholder="Type Name..."
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
                 />
 
-                <label className="text-white font-medium mt-2 mab-2">link URL</label>
+                <label className="text-white font-medium mt-2 mab-2">URL</label>
 
                 <Input
                 type="url"
@@ -140,7 +140,7 @@ export function Admin(){
 
                 <button type="submit"
                 className="bg-blue-500 rounded-md hover:cursor-pointer text-white font-medium gap-4 flex justify-center py-2 items-center mb-5">
-                    Sign-up
+                    Register Link
                 </button>
 
                  </form>

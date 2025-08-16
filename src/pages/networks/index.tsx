@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Input } from "../../components/input";
 
 import { db } from "../../services/firebaseconection";
@@ -16,6 +16,23 @@ export function Networks(){
     const [youtube, setYoutube] = useState('')
 
 
+    useEffect(()=>{
+        function loadLink(){
+            const docRef =doc(db, 'social', 'link')
+            getDoc(docRef)
+            .then((snapshot)=>{
+               if(snapshot.data() !== undefined){
+                setFacebook(snapshot.data()?.facebook)
+                setInstagram(snapshot.data()?.instagram)
+                setYoutube(snapshot.data()?.youtube)
+
+               }
+            })
+
+        }
+        loadLink()
+
+    },[])
     function handleRegister(e: FormEvent){
         e.preventDefault();
 
@@ -25,6 +42,7 @@ export function Networks(){
             youtube: youtube
         })
         .then(()=>{
+            console.log('CADASTRADOOOO')
 
         })
         .catch((error)=>{
@@ -64,7 +82,7 @@ export function Networks(){
             />
 
             <button type="submit"
-             className="bg-blue-600 mb-7 font-medium justify-center items-center flex h-9 rounded-mb text-white">
+             className="bg-blue-600 mb-7 hover:cursor-pointer font-medium justify-center items-center flex h-9 rounded-mb text-white">
                 Save Links
             </button>
            </form>

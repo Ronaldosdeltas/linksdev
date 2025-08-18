@@ -79,12 +79,16 @@ export function Admin(){
         })
 
     }
-
-         async function handleDelete(id: string) {
-            const docRef = doc(db, 'links', id)
-            await deleteDoc(docRef)
-
-        }
+async function handleDelete(id: string) {
+    try {
+      const docRef = doc(db, "links", id);
+      await deleteDoc(docRef);
+      setLinks(links.filter((link) => link.id !== id)); // Atualiza o estado após deleção
+      console.log("Link deletado com sucesso!");
+    } catch (error) {
+      console.log("Erro ao deletar: ", error);
+    }
+  }
    
     return (
         <>

@@ -14,7 +14,7 @@ export function Header(){
 
 }
   return (
-    <header className="bg-gray-900 w-full py-6 flex items-center justify-between px-5">
+    <header className="bg-gray-900 w-full py-6 flex items-center justify-between px-7">
       <div className="flex items-center space-x-4">
       <Link to="/">
       <h1 className="text-amber-50 text-2xl font-bold hover:text-amber-300">Ronaldoss
@@ -43,10 +43,6 @@ export function Header(){
         </Link>
         </div>
       <nav className="flex items-center space-x-4">
-        <Link to="/Contact" className="text-amber-50 hover:text-amber-300 text-2xl font-medium">
-        WhatsApp
-        </Link>
-
         {isAdminpage && (
         <button 
         className="text-white hover:text-amber-300 hover:bg-gray-700 rounded-full p-2 transition duration-300"
